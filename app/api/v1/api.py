@@ -1,0 +1,17 @@
+from fastapi import APIRouter
+from app.api.v1.endpoints import webhooks, payments
+
+api_router = APIRouter()
+
+api_router.include_router(
+    webhooks.router, 
+    prefix="/webhooks", 
+    tags=["webhooks"]
+)
+
+
+api_router.include_router(
+    payments.router, 
+    prefix="/payments", 
+    tags=["payments"]
+)

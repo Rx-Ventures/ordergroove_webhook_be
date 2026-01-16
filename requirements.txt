@@ -1,0 +1,25 @@
+# FastAPI Framework
+fastapi==0.115.5
+
+# ASGI Server
+uvicorn[standard]==0.40.0
+
+# Data Validation
+pydantic==2.12.5
+pydantic-settings==2.12.0
+
+# Environment Variables
+python-dotenv==1.2.1
+
+# Database (PostgreSQL)
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
+
+# HTTP Client (for PSP calls)
+httpx==0.28.1
+
+# Payment Gateway SDK
+solidgate-card-sdk==0.1.0
+
+greenlet==3.1.1
