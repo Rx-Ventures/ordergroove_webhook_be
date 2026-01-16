@@ -1,4 +1,4 @@
-######## Pydantic rules 
+###### Pydantic rules 
 
 - always create a base for schema followed by 
 reqeuest,response,update,deleted 
