@@ -20,6 +20,17 @@ async def webhook_test(request: Request):
     body = await request.json()
 
 
+    print("=" * 80)
+    print("=" * 80)
+    print(" ")
+    print(" ")
+    print(body)
+    print(" ")
+    print(" ")
+    print("=" * 80)
+    print("=" * 80)
+
+
     return GenericApiResponse(
         success=True,
         message="Success", 
