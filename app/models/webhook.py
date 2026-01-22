@@ -56,9 +56,10 @@ class WebhookEvent(Base):
         DateTime(timezone=True),
         server_default=func.now(),
     )
-    processed_at: Mapped[datetime | None] = mapped_column(
+    updated_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),
         nullable=True,
+        onupdate=func.now(),
     )
     
     def __repr__(self) -> str:

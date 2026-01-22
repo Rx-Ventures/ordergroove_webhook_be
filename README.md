@@ -46,7 +46,7 @@ npm install
 
 ###### Database Access Strategy
 
-### ORM (SQLAlchemy)
+###### ORM (SQLAlchemy)
 
 - Tables we own and created via Alembic
 - webhook_events table
@@ -55,17 +55,51 @@ npm install
 - Migrations managed by us
 - Raw SQL (asyncpg)
 
-### Medusa's existing tables
+###### Medusa's existing tables
 
 - Read-only queries to Medusa data
 - Complex joins and aggregations
 - No model maintenance needed
 - Schema changes handled by Medusa
 
-### Simple Rule
+###### Simple Rule
 
 - We created it → ORM
 - Medusa created it → Raw SQL
 
 
+###### PROD ( will create after successfull dev )
+
+docker-compose -f docker-compose.prod.yml down 
+docker-compose -f docker-compose.prod.yml build --no-cache
+docker-compose -f docker-compose.prod.yml up
+docker-compose -f docker-compose.prod.yml logs -f app
+
+###### DEV
+
+docker-compose down
+docker-compose build --no-cache
+docker-compose up
+
+###### Alembic Commands
+
+###### Create & Run Migrations
+- Create new migration: `alembic revision --autogenerate -m "description of change"`
+- Run all pending migrations: `alembic upgrade head`
+- Run inside Docker: `docker-compose exec app alembic upgrade head`
+
+###### Undo Migrations
+- Undo last migration: `alembic downgrade -1`
+- Undo all migrations: `alembic downgrade base`
+
+###### Check Status
+- Check current version: `alembic current`
+- See migration history: `alembic history`
+
+###### After Deleting Database
+- Just run: `alembic upgrade head`
+- This re-applies all migrations from scratch
+
+
+###### Reset Alembic 
 
