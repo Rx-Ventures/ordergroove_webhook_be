@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from fastapi import status
 from typing import Optional, Dict, Any
 
 class MessageResponse(BaseModel):
@@ -6,7 +7,9 @@ class MessageResponse(BaseModel):
 
 class SuccessResponse(BaseModel):
     success: bool
-    message: Optional[str] = None
+    status_code: int | None = status.HTTP_200_OK    
+    message: str| None = None    
 
 class GenericApiResponse(SuccessResponse):
-    data: Dict[str, Any]     
+    data: Dict[str, Any] | None = None    
+

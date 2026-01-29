@@ -20,7 +20,6 @@ async def initialize_payment(payload: PaymentInitializeRequest) -> GenericApiRes
             currency=payload.currency,
             customer_email=payload.customer_email,
         )
-        
         response_data = PaymentInitializeResponse(
             session_id=payload.order_id,
             psp=payload.psp,
