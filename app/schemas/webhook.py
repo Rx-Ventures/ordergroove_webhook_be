@@ -8,12 +8,12 @@ class WebhookEventBase(BaseModel):
     event_type: str | None = None
     medusa_order_id: str | None = None
     processed: bool = False
-    
+    error_message: str | None = None
+
     model_config = ConfigDict(from_attributes=True)
     
     def to_json(self):
         return self.model_dump_json()
-
 
 class WebhookEventCreate(WebhookEventBase):
     event_id: str
@@ -21,12 +21,8 @@ class WebhookEventCreate(WebhookEventBase):
     event_type: str
     payload: dict
 
-
 class WebhookEventResponse(WebhookEventBase, BaseDBSchema):
-    event_id: str
-    psp: str
-    event_type: str
-
+    pass
 
 class WebhookAck(BaseModel):
     success: bool = True
