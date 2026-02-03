@@ -8,10 +8,10 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     
     DATABASE_URL: str
-    DB_POOL_SIZE: int = 5
-    DB_MAX_OVERFLOW: int = 10
+    DB_POOL_SIZE: int = 3
+    DB_MAX_OVERFLOW: int = 2
     DB_POOL_TIMEOUT: int = 30
-    DB_POOL_RECYCLE: int = 3600
+    DB_POOL_RECYCLE: int = 300
     DB_ECHO: bool = False
     
     SOLIDGATE_PUBLIC_KEY: str
@@ -25,8 +25,13 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "*"
     CORS_CREDENTIALS: bool = True
     
-    REDIS_URL: str | None = None
-    REDIS_PASSWORD: str | None = None
+    REDIS_URL: str 
+    REDIS_PASSWORD: str 
+
+    MEDUSA_BASE_URL: str = "http://localhost:9000"
+    MEDUSA_ADMIN_EMAIL: str 
+    MEDUSA_ADMIN_PASSWORD: str
+    MEDUSA_TOKEN_CACHE_TTL: int = 82800
     
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -67,6 +72,5 @@ class Settings(BaseSettings):
         if v.lower() not in allowed:
             raise ValueError(f"ENVIRONMENT must be one of: {allowed}")
         return v.lower()
-
 
 settings = Settings()
